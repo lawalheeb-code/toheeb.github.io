@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Retail Sales Performance Analysis | Toheeb</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================
+           DATA STRUCTURE
+        ========================== */
+
+        .project3-data-structure {
+            padding: 90px 8%;
+        }
+
+        .project3-data-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .project3-column-box {
+            margin-top: 35px;
+            background: #11151a;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .project3-column-box h3 {
+            margin-bottom: 20px;
+        }
+
+        .project3-column-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .project3-column-list span {
+            background: rgba(74,222,128,0.08);
+            border: 1px solid rgba(74,222,128,0.22);
+            color: #b8f5ca;
+            padding: 8px 11px;
+            border-radius: 7px;
+            font-size: 12px;
+            font-family: monospace;
+        }
+
+
+        /* =========================
+           SCREENSHOTS
+        ========================== */
+
+        .project3-process-image {
+            margin-top: 35px;
+            background: #101419;
+            padding: 12px;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .project3-process-image img {
+            width: 100%;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .project3-image-caption {
+            margin-top: 18px;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           EDA SCREENSHOT
+        ========================== */
+
+        .project3-eda-image {
+            margin-top: 40px;
+            background: #101419;
+            padding: 12px;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .project3-eda-image img {
+            width: 100%;
+            display: block;
+            border-radius: 10px;
+        }
+
+
+        @media (max-width: 800px) {
+
+            .project3-data-structure {
+                padding: 70px 6%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     PROJECT HERO
+========================== -->
+
+<section class="project3-hero">
+
+    <div class="project3-container">
+
+        <a href="index.html" class="project3-back">
+            ← Back to Portfolio
+        </a>
+
+
+        <div class="project3-hero-content">
+
+            <span class="project3-label">
+                Excel Data Analysis
+            </span>
+
+            <h1>
+                Retail Sales<br>
+                Performance Analysis
+            </h1>
+
+            <p>
+                An Excel-based analysis exploring sales performance,
+                customer activity, transaction trends, product performance,
+                and discount patterns.
+            </p>
+
+
+            <div class="project3-tools">
+
+                <span>Excel</span>
+                <span>Power Query</span>
+                <span>Power Pivot</span>
+                <span>PivotTables</span>
+                <span>Data Cleaning</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     OVERVIEW
+========================== -->
+
+<section class="project3-section">
+
+    <div class="project3-container">
+
+        <div class="project3-section-title">
+
+            <span>01</span>
+
+            <h2>
+                Project Overview
+            </h2>
+
+        </div>
+
+
+        <div class="project3-overview">
+
+
+            <div>
+
+                <p>
+                    This project analyzes a retail sales dataset containing
+                    10,025 transactions. The goal was to clean the raw data,
+                    explore sales patterns, investigate changes in performance,
+                    and build an interactive Excel dashboard for decision-making.
+                </p>
+
+                <p>
+                    The analysis combines Excel data cleaning, PivotTables,
+                    Power Query, Power Pivot, and exploratory analysis to
+                    transform raw transactional data into meaningful business insights.
+                </p>
+
+            </div>
+
+
+            <div class="project3-overview-card">
+
+                <div class="project3-stat">
+                    <strong>10,025</strong>
+                    <span>Transactions</span>
+                </div>
+
+                <div class="project3-stat">
+                    <strong>2,446</strong>
+                    <span>Unique Customers</span>
+                </div>
+
+                <div class="project3-stat">
+                    <strong>₦738.89M</strong>
+                    <span>Total Sales</span>
+                </div>
+
+                <div class="project3-stat">
+                    <strong>₦73.70K</strong>
+                    <span>Avg. Transaction Value</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DATA STRUCTURE
+========================== -->
+
+<section class="project3-data-structure">
+
+    <div class="project3-data-container">
+
+        <div class="project3-section-title">
+
+            <span>02</span>
+
+            <h2>
+                Data Structure
+            </h2>
+
+        </div>
+
+
+        <p style="color:#aaa; max-width:800px; margin-top:15px;">
+            The Excel dataset was organized into a transactional table
+            containing customer, order, product, category, date, and sales information.
+        </p>
+
+
+        <div class="project3-column-box">
+
+            <h3>
+                Table1
+            </h3>
+
+
+            <div class="project3-column-list">
+
+                <span>Order_ID</span>
+                <span>Customer_ID</span>
+                <span>Customer_Name</span>
+                <span>Order_Date</span>
+                <span>Product</span>
+                <span>Category</span>
+                <span>Quantity</span>
+                <span>Unit_Price</span>
+                <span>Discount</span>
+                <span>Total_Sales</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     POWER QUERY
+========================== -->
+
+<section class="project3-section project3-dark-section">
+
+    <div class="project3-container">
+
+        <div class="project3-section-title">
+
+            <span>03</span>
+
+            <h2>
+                Data Cleaning with Power Query
+            </h2>
+
+        </div>
+
+
+        <p class="project3-section-intro">
+
+            Power Query was used to clean and transform the transactional
+            data before analysis. The preparation included data type changes,
+            filtering, custom calculations, trimming text, and removing
+            unnecessary columns.
+
+        </p>
+
+
+        <div class="project3-process-image">
+
+            <img
+                src="images/project3-power-query.png"
+                alt="Excel Power Query data cleaning"
+            >
+
+        </div>
+
+
+        <p class="project3-image-caption">
+
+            Power Query transformation steps used to prepare the Excel dataset.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BUSINESS QUESTIONS
+========================== -->
+
+<section class="project3-section">
+
+    <div class="project3-container">
+
+        <div class="project3-section-title">
+
+            <span>04</span>
+
+            <h2>
+                Business Questions
+            </h2>
+
+        </div>
+
+
+        <div class="project3-question-grid">
+
+
+            <div class="project3-question">
+
+                <span>01</span>
+
+                <h3>
+                    How are sales performing over time?
+                </h3>
+
+                <p>
+                    Identify periods of strong and weak sales performance.
+                </p>
+
+            </div>
+
+
+            <div class="project3-question">
+
+                <span>02</span>
+
+                <h3>
+                    Which products generate the most revenue?
+                </h3>
+
+                <p>
+                    Compare product performance based on sales revenue.
+                </p>
+
+            </div>
+
+
+            <div class="project3-question">
+
+                <span>03</span>
+
+                <h3>
+                    How has customer activity changed?
+                </h3>
+
+                <p>
+                    Examine transaction volume and unique customer activity.
+                </p>
+
+            </div>
+
+
+            <div class="project3-question">
+
+                <span>04</span>
+
+                <h3>
+                    How do discounts relate to sales?
+                </h3>
+
+                <p>
+                    Compare sales generated across different discount levels.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     EDA
+========================== -->
+
+<section class="project3-section project3-dark-section">
+
+    <div class="project3-container">
+
+        <div class="project3-section-title">
+
+            <span>05</span>
+
+            <h2>
+                Exploratory Data Analysis
+            </h2>
+
+        </div>
+
+
+        <div class="project3-eda-intro">
+
+            <p>
+                Exploratory analysis was used to investigate a noticeable
+                change in sales performance between August and September.
+            </p>
+
+        </div>
+
+
+        <div class="project3-eda-image">
+
+            <img
+                src="images/project3-eda.png"
+                alt="Excel EDA worksheet"
+            >
+
+        </div>
+
+
+        <p class="project3-image-caption">
+            Excel EDA worksheet used to investigate sales, products,
+            customers, transactions, and discount patterns.
+        </p>
+
+
+        <div class="project3-comparison">
+
+
+            <div class="project3-month">
+
+                <span>
+                    August
+                </span>
+
+                <strong>
+                    ₦76.78M
+                </strong>
+
+
+                <div class="project3-detail">
+
+                    <span>
+                        Transactions
+                    </span>
+
+                    <b>
+                        1,068
+                    </b>
+
+                </div>
+
+
+                <div class="project3-detail">
+
+                    <span>
+                        Avg. Transaction
+                    </span>
+
+                    <b>
+                        ₦71.89K
+                    </b>
+
+                </div>
+
+
+                <div class="project3-detail">
+
+                    <span>
+                        Unique Customers
+                    </span>
+
+                    <b>
+                        865
+                    </b>
+
+                </div>
+
+            </div>
+
+
+            <div class="project3-arrow">
+                →
+            </div>
+
+
+            <div class="project3-month">
+
+                <span>
+                    September
+                </span>
+
+                <strong>
+                    ₦36.40M
+                </strong>
+
+
+                <div class="project3-detail">
+
+                    <span>
+                        Transactions
+                    </span>
+
+                    <b>
+                        487
+                    </b>
+
+                </div>
+
+
+                <div class="project3-detail">
+
+                    <span>
+                        Avg. Transaction
+                    </span>
+
+                    <b>
+                        ₦74.75K
+                    </b>
+
+                </div>
+
+
+                <div class="project3-detail">
+
+                    <span>
+                        Unique Customers
+                    </span>
+
+                    <b>
+                        433
+                    </b>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="project3-finding">
+
+            <span>
+                Key observation
+            </span>
+
+            <h3>
+                Sales declined by 52.6% from August to September.
+            </h3>
+
+            <p>
+                The decline coincided with a 54.4% reduction in transactions
+                and a 49.9% reduction in unique customers, while average
+                transaction value remained relatively stable.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DASHBOARD
+========================== -->
+
+<section class="project3-section">
+
+    <div class="project3-container">
+
+        <div class="project3-section-title">
+
+            <span>06</span>
+
+            <h2>
+                Excel Dashboard
+            </h2>
+
+        </div>
+
+
+        <p class="project3-section-intro">
+
+            An interactive Excel dashboard summarizing sales,
+            transactions, customer activity, product performance,
+            and discount patterns.
+
+        </p>
+
+
+        <div class="project3-dashboard">
+
+            <img
+                src="images/excel-dashboard.png"
+                alt="Retail Sales Excel Dashboard"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     KEY FINDINGS
+========================== -->
+
+<section class="project3-section project3-dark-section">
+
+    <div class="project3-container">
+
+        <div class="project3-section-title">
+
+            <span>07</span>
+
+            <h2>
+                Key Findings
+            </h2>
+
+        </div>
+
+
+        <div class="project3-findings">
+
+
+            <div class="project3-finding-card">
+
+                <span>01</span>
+
+                <h3>
+                    September sales dropped sharply
+                </h3>
+
+                <p>
+                    Sales fell from approximately ₦76.78M in August
+                    to ₦36.40M in September.
+                </p>
+
+            </div>
+
+
+            <div class="project3-finding-card">
+
+                <span>02</span>
+
+                <h3>
+                    Transaction volume also declined
+                </h3>
+
+                <p>
+                    Transactions fell from 1,068 in August to 487
+                    in September.
+                </p>
+
+            </div>
+
+
+            <div class="project3-finding-card">
+
+                <span>03</span>
+
+                <h3>
+                    Average transaction value remained stable
+                </h3>
+
+                <p>
+                    Average transaction value increased slightly from
+                    ₦71.89K in August to ₦74.75K in September.
+                </p>
+
+            </div>
+
+
+            <div class="project3-finding-card">
+
+                <span>04</span>
+
+                <h3>
+                    Customer activity declined
+                </h3>
+
+                <p>
+                    Unique customers decreased from 865 in August
+                    to 433 in September.
+                </p>
+
+            </div>
+
+
+            <div class="project3-finding-card">
+
+                <span>05</span>
+
+                <h3>
+                    Office Chair led revenue
+                </h3>
+
+                <p>
+                    Office Chair generated approximately ₦198.27M
+                    in total sales across the dataset.
+                </p>
+
+            </div>
+
+
+            <div class="project3-finding-card">
+
+                <span>06</span>
+
+                <h3>
+                    Most sales had no discount
+                </h3>
+
+                <p>
+                    Transactions with a 0% discount generated
+                    approximately ₦388.95M in sales.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     WORKFLOW
+========================== -->
+
+<section class="project3-section">
+
+    <div class="project3-container">
+
+        <div class="project3-section-title">
+
+            <span>08</span>
+
+            <h2>
+                Tools & Workflow
+            </h2>
+
+        </div>
+
+
+        <div class="project3-workflow">
+
+
+            <div class="project3-workflow-step">
+
+                <span>01</span>
+
+                <h3>
+                    Data Cleaning
+                </h3>
+
+                <p>
+                    Cleaned missing values, duplicates, and inconsistent
+                    records before analysis.
+                </p>
+
+            </div>
+
+
+            <div class="project3-workflow-step">
+
+                <span>02</span>
+
+                <h3>
+                    Power Query
+                </h3>
+
+                <p>
+                    Used Power Query for data transformation and preparation.
+                </p>
+
+            </div>
+
+
+            <div class="project3-workflow-step">
+
+                <span>03</span>
+
+                <h3>
+                    Data Modeling
+                </h3>
+
+                <p>
+                    Used Power Pivot and distinct customer calculations
+                    for deeper analysis.
+                </p>
+
+            </div>
+
+
+            <div class="project3-workflow-step">
+
+                <span>04</span>
+
+                <h3>
+                    EDA
+                </h3>
+
+                <p>
+                    Investigated trends across sales, customers,
+                    transactions, products, and discounts.
+                </p>
+
+            </div>
+
+
+            <div class="project3-workflow-step">
+
+                <span>05</span>
+
+                <h3>
+                    Dashboard
+                </h3>
+
+                <p>
+                    Built an interactive Excel dashboard using
+                    PivotTables, charts, and slicers.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SUMMARY
+========================== -->
+
+<section class="project3-section project3-dark-section">
+
+    <div class="project3-container">
+
+        <div class="project3-section-title">
+
+            <span>09</span>
+
+            <h2>
+                Project Summary
+            </h2>
+
+        </div>
+
+
+        <div class="project3-summary">
+
+            <p>
+                This project demonstrates the ability to take raw retail
+                transaction data through the full analytical workflow —
+                from cleaning and exploratory analysis to dashboard
+                development and business insight generation.
+            </p>
+
+            <p>
+                The analysis identified a significant September sales
+                decline and showed that the change coincided with lower
+                transaction volume and fewer unique customers, while
+                average transaction value remained relatively stable.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BACK TO PORTFOLIO
+========================== -->
+
+<section class="project3-end">
+
+    <div class="project3-container">
+
+        <a
+            href="index.html"
+            class="project3-back-button"
+        >
+            ← Back to Portfolio
+        </a>
+
+    </div>
+
+</section>
+
+
+</body>
+</html>

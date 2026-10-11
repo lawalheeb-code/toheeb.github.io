@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL E-Commerce Analysis | Toheeb Lawal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #0b0d17;
+            color: #f5f7ff;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        /* HERO */
+        .project-hero {
+            padding: 120px 0 80px;
+            background:
+                radial-gradient(circle at top right, rgba(91, 97, 255, 0.16), transparent 35%),
+                #0b0d17;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #aeb5ff;
+            margin-bottom: 35px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            color: #ffffff;
+            transform: translateX(-4px);
+        }
+
+        .project-label {
+            display: inline-block;
+            padding: 7px 14px;
+            border: 1px solid rgba(91, 97, 255, 0.35);
+            background: rgba(91, 97, 255, 0.08);
+            color: #9ca3ff;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 22px;
+        }
+
+        .project-hero h1 {
+            font-size: clamp(2.2rem, 5vw, 4.2rem);
+            line-height: 1.1;
+            max-width: 900px;
+            margin-bottom: 25px;
+        }
+
+        .project-hero h1 span {
+            color: #7c83ff;
+        }
+
+        .project-hero p {
+            max-width: 820px;
+            color: #aeb4c8;
+            font-size: 17px;
+        }
+
+        .hero-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .hero-tools span {
+            padding: 8px 13px;
+            border-radius: 6px;
+            background: #151827;
+            border: 1px solid #252a3d;
+            color: #d9dcf0;
+            font-size: 13px;
+        }
+
+        /* GENERAL SECTIONS */
+        section {
+            padding: 75px 0;
+            border-top: 1px solid #191d2c;
+        }
+
+        .section-title {
+            margin-bottom: 35px;
+        }
+
+        .section-title span {
+            color: #737aff;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .section-title h2 {
+            font-size: 30px;
+            margin-top: 8px;
+        }
+
+        .section-title p {
+            color: #969db3;
+            margin-top: 10px;
+            max-width: 750px;
+        }
+
+        /* OVERVIEW */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 25px;
+        }
+
+        .overview-card,
+        .info-card {
+            background: #111421;
+            border: 1px solid #202538;
+            border-radius: 12px;
+            padding: 28px;
+        }
+
+        .overview-card p {
+            color: #aeb4c8;
+            margin-bottom: 16px;
+        }
+
+        .overview-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-card h3 {
+            font-size: 17px;
+            margin-bottom: 18px;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            padding: 9px 0;
+            border-bottom: 1px solid #202538;
+            color: #aeb4c8;
+            font-size: 14px;
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-list strong {
+            color: #f4f5ff;
+        }
+
+        /* TABLES */
+        .tables-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .table-card {
+            background: #111421;
+            border: 1px solid #202538;
+            border-radius: 12px;
+            padding: 24px;
+            transition: 0.3s;
+        }
+
+        .table-card:hover {
+            border-color: #454cff;
+            transform: translateY(-3px);
+        }
+
+        .table-card h3 {
+            color: #8d93ff;
+            font-size: 17px;
+            margin-bottom: 15px;
+        }
+
+        .columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .column {
+            background: #181c2c;
+            border: 1px solid #272c40;
+            border-radius: 5px;
+            padding: 5px 9px;
+            font-size: 12px;
+            color: #c4c9dc;
+        }
+
+        /* PROCESS */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .process-card {
+            background: #111421;
+            border: 1px solid #202538;
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .process-number {
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(91, 97, 255, 0.15);
+            color: #858bff;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 17px;
+        }
+
+        .process-card h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .process-card p {
+            color: #969db3;
+            font-size: 14px;
+        }
+
+        /* TECHNIQUES */
+        .techniques {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .technique {
+            padding: 11px 15px;
+            border-radius: 7px;
+            background: #111421;
+            border: 1px solid #292e43;
+            color: #d9dcf0;
+            font-size: 14px;
+        }
+
+        /* CODE */
+        .code-card {
+            background: #080a11;
+            border: 1px solid #252a3d;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .code-header {
+            padding: 12px 18px;
+            background: #121522;
+            border-bottom: 1px solid #252a3d;
+            color: #858bff;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        pre {
+            padding: 22px;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: Consolas, Monaco, monospace;
+            color: #d7dcf0;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        /* ANALYSIS */
+        .analysis-section {
+            margin-bottom: 55px;
+        }
+
+        .analysis-heading {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 22px;
+        }
+
+        .analysis-heading .number {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: rgba(91, 97, 255, 0.13);
+            color: #858bff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .analysis-heading h3 {
+            font-size: 22px;
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .question-card {
+            background: #111421;
+            border: 1px solid #202538;
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .question-card h4 {
+            font-size: 15px;
+            color: #8f95ff;
+            margin-bottom: 15px;
+        }
+
+        .question-card ul {
+            padding-left: 20px;
+        }
+
+        .question-card li {
+            color: #aeb4c8;
+            margin-bottom: 9px;
+            font-size: 14px;
+        }
+
+        /* KPI */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .kpi {
+            background: #111421;
+            border: 1px solid #202538;
+            border-radius: 10px;
+            padding: 22px;
+        }
+
+        .kpi span {
+            display: block;
+            color: #8f95aa;
+            font-size: 12px;
+            margin-bottom: 7px;
+        }
+
+        .kpi strong {
+            font-size: 23px;
+            color: #f4f5ff;
+        }
+
+        /* FINDINGS */
+        .findings-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .finding {
+            background: #111421;
+            border-left: 3px solid #646aff;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .finding h3 {
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .finding p {
+            color: #a4abc0;
+            font-size: 14px;
+        }
+
+        /* SUMMARY */
+        .summary {
+            background: linear-gradient(
+                135deg,
+                rgba(91, 97, 255, 0.12),
+                rgba(17, 20, 33, 0.9)
+            );
+            border: 1px solid #282d48;
+            border-radius: 15px;
+            padding: 35px;
+        }
+
+        .summary p {
+            color: #b5bbce;
+            max-width: 850px;
+            margin-bottom: 15px;
+        }
+
+        .summary p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* FOOTER */
+        .back-portfolio {
+            text-align: center;
+            padding: 70px 0 100px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 13px 22px;
+            background: #5b61ff;
+            color: white;
+            border-radius: 7px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .back-button:hover {
+            background: #7076ff;
+            transform: translateY(-2px);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 850px) {
+            .overview-grid,
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tables-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .kpi-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .findings-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .project-hero {
+                padding: 90px 0 60px;
+            }
+
+            section {
+                padding: 55px 0;
+            }
+
+            .process-grid,
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .overview-card,
+            .info-card,
+            .table-card,
+            .question-card,
+            .process-card {
+                padding: 20px;
+            }
+
+            .project-hero p {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <header class="project-hero">
+        <div class="container">
+
+            <a href="index.html" class="back-link">← Back to Portfolio</a>
+
+            <span class="project-label">SQL PROJECT</span>
+
+            <h1>
+                E-Commerce Customer Behavior,
+                <span>Product Performance & Sales Analysis</span>
+            </h1>
+
+            <p>
+                An end-to-end SQL analysis of e-commerce customer interactions,
+                product performance, purchases, reviews, sessions, and user behavior.
+                The project focuses on data preparation, validation, exploratory analysis,
+                and extracting business insights from multiple related tables.
+            </p>
+
+            <div class="hero-tools">
+                <span>MySQL</span>
+                <span>SQL</span>
+                <span>CTEs</span>
+                <span>Window Functions</span>
+                <span>Joins</span>
+                <span>Data Cleaning</span>
+                <span>EDA</span>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- OVERVIEW -->
+    <section>
+        <div class="container">
+
+            <div class="section-title">
+                <span>01 — Overview</span>
+                <h2>Project Overview</h2>
+                <p>
+                    The project explores how customers interact with products,
+                    how those interactions relate to purchases, and how product,
+                    sales, review, and user-level data can be analyzed using SQL.
+                </p>
+            </div>
+
+            <div class="overview-grid">
+
+                <div class="overview-card">
+                    <p>
+                        I worked with six related e-commerce datasets covering
+                        interactions, products, purchases, reviews, sessions,
+                        and users.
+                    </p>
+
+                    <p>
+                        Before analysis, I imported the CSV data into MySQL,
+                        validated the imports, investigated duplicates and blank
+                        values, standardized text fields, handled NULL values,
+                        and created cleaned working tables.
+                    </p>
+
+                    <p>
+                        I then used SQL to investigate customer engagement,
+                        product performance, sales and revenue, customer reviews,
+                        and user characteristics.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Project Scope</h3>
+
+                    <ul class="info-list">
+                        <li><strong>Database:</strong> MySQL</li>
+                        <li><strong>Tables:</strong> 6</li>
+                        <li><strong>Focus:</strong> E-commerce analytics</li>
+                        <li><strong>Process:</strong> Import → Clean → Validate → Analyze</li>
+                        <li><strong>Analysis:</strong> Customer, Product, Sales & User</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- DATA STRUCTURE -->
+    <section>
+        <div class="container">
+
+            <div class="section-title">
+                <span>02 — Data Structure</span>
+                <h2>Database Tables</h2>
+                <p>
+                    The analysis was built around six main tables containing
+                    customer, product, interaction, purchase, review, and session data.
+                </p>
+            </div>
+
+            <div class="tables-grid">
+
+                <div class="table-card">
+                    <h3>interactions</h3>
+                    <div class="columns">
+                        <span class="column">interaction_id</span>
+                        <span class="column">user_id</span>
+                        <span class="column">product_id</span>
+                        <span class="column">session_id</span>
+                        <span class="column">interaction_type</span>
+                        <span class="column">time_stamp</span>
+                        <span class="column">dwell_time_ms</span>
+                    </div>
+                </div>
+
+                <div class="table-card">
+                    <h3>products</h3>
+                    <div class="columns">
+                        <span class="column">product_id</span>
+                        <span class="column">product_name</span>
+                        <span class="column">product_description</span>
+                        <span class="column">category</span>
+                        <span class="column">subcategory</span>
+                        <span class="column">brand</span>
+                        <span class="column">price</span>
+                        <span class="column">rating_avg</span>
+                        <span class="column">review_count</span>
+                        <span class="column">stock_quantity</span>
+                        <span class="column">date_added</span>
+                    </div>
+                </div>
+
+                <div class="table-card">
+                    <h3>purchases</h3>
+                    <div class="columns">
+                        <span class="column">purchase_id</span>
+                        <span class="column">order_id</span>
+                        <span class="column">user_id</span>
+                        <span class="column">product_id</span>
+                        <span class="column">session_id</span>
+                        <span class="column">interaction_id</span>
+                        <span class="column">quantity</span>
+                        <span class="column">unit_price</span>
+                        <span class="column">total_amount</span>
+                        <span class="column">order_date</span>
+                    </div>
+                </div>
+
+                <div class="table-card">
+                    <h3>reviews</h3>
+                    <div class="columns">
+                        <span class="column">review_id</span>
+                        <span class="column">user_id</span>
+                        <span class="column">product_id</span>
+                        <span class="column">purchase_id</span>
+                        <span class="column">rating</span>
+                        <span class="column">title</span>
+                        <span class="column">review_teXt</span>
+                        <span class="column">review_date</span>
+                    </div>
+                </div>
+
+                <div class="table-card">
+                    <h3>sessions</h3>
+                    <div class="columns">
+                        <span class="column">session_id</span>
+                        <span class="column">user_id</span>
+                        <span class="column">start_time</span>
+                        <span class="column">device_type</span>
+                        <span class="column">referrer_source</span>
+                        <span class="column">is_converted</span>
+                    </div>
+                </div>
+
+                <div class="table-card">
+                    <h3>users</h3>
+                    <div class="columns">
+                        <span class="column">user_id</span>
+                        <span class="column">age</span>
+                        <span class="column">gender</span>
+                        <span class="column">country</span>
+                        <span class="column">city</span>
+                        <span class="column">signup_date</span>
+                        <span class="column">income_level</span>
+                        <span class="column">preferred_category</span>
+                        <span class="column">loyalty_tier</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="data-volume">
+
+    <div class="volume-card">
+        <span>Interactions</span>
+        <strong>100,000</strong>
+        <small>Rows</small>
+    </div>
+
+    <div class="volume-card">
+        <span>Products</span>
+        <strong>1,000</strong>
+        <small>Rows</small>
+    </div>
+
+    <div class="volume-card">
+        <span>Purchases</span>
+        <strong>1,737</strong>
+        <small>Rows</small>
+    </div>
+
+    <div class="volume-card">
+        <span>Reviews</span>
+        <strong>1,254</strong>
+        <small>Rows</small>
+    </div>
+
+    <div class="volume-card">
+        <span>Sessions</span>
+        <strong>19,315</strong>
+        <small>Rows</small>
+    </div>
+
+    <div class="volume-card">
+        <span>Users</span>
+        <strong>10,000</strong>
+        <small>Rows</small>
+    </div>
+
+</div>
+    </section>
+
+    
+
+
+    <!-- DATA CLEANING -->
+    <section>
+        <div class="container">
+
+            <div class="section-title">
+                <span>03 — Data Preparation</span>
+                <h2>Import, Cleaning & Validation</h2>
+                <p>
+                    Data preparation was performed directly in MySQL before the
+                    exploratory analysis.
+                </p>
+            </div>
+
+            <div class="process-grid">
+
+                <div class="process-card">
+                    <div class="process-number">01</div>
+                    <h3>Import Data</h3>
+                    <p>
+                        Imported CSV files into MySQL using LOAD DATA INFILE
+                        and checked the import using row counts and warnings.
+                    </p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-number">02</div>
+                    <h3>Validate Imports</h3>
+                    <p>
+                        Used SELECT, COUNT, COUNT DISTINCT, SHOW WARNINGS,
+                        DESCRIBE and other checks to inspect the imported data.
+                    </p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-number">03</div>
+                    <h3>Create Working Tables</h3>
+                    <p>
+                        Created cleaned copies using the naming pattern
+                        interactions2, products2, purchases2, reviews2,
+                        sessions2 and users2.
+                    </p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-number">04</div>
+                    <h3>Check Duplicates</h3>
+                    <p>
+                        Used ROW_NUMBER() with PARTITION BY to investigate
+                        duplicate records across the datasets.
+                    </p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-number">05</div>
+                    <h3>Standardize Values</h3>
+                    <p>
+                        Trimmed IDs and text fields and standardized values
+                        such as interaction types, referrer sources and
+                        income levels.
+                    </p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-number">06</div>
+                    <h3>Handle NULL Values</h3>
+                    <p>
+                        Converted blank values to NULL where appropriate,
+                        including blank product ratings and purchase IDs
+                        in the reviews table.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SQL TECHNIQUES -->
+    <section>
+        <div class="container">
+
+            <div class="section-title">
+                <span>04 — SQL Skills</span>
+                <h2>SQL Techniques Used</h2>
+                <p>
+                    The project combines data preparation techniques with
+                    analytical SQL patterns used to answer business questions.
+                </p>
+            </div>
+
+            <div class="techniques">
+                <span class="technique">LOAD DATA INFILE</span>
+                <span class="technique">CTEs</span>
+                <span class="technique">ROW_NUMBER()</span>
+                <span class="technique">PARTITION BY</span>
+                <span class="technique">INNER JOIN</span>
+                <span class="technique">LEFT JOIN</span>
+                <span class="technique">GROUP BY</span>
+                <span class="technique">ORDER BY</span>
+                <span class="technique">CASE</span>
+                <span class="technique">COALESCE</span>
+                <span class="technique">NULLIF</span>
+                <span class="technique">TRIM</span>
+                <span class="technique">REPLACE</span>
+                <span class="technique">COUNT()</span>
+                <span class="technique">COUNT(DISTINCT)</span>
+                <span class="technique">SUM()</span>
+                <span class="technique">AVG()</span>
+                <span class="technique">ALTER TABLE</span>
+                <span class="technique">DROP COLUMN</span>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- CODE EXAMPLES -->
+    <section>
+        <div class="container">
+
+            <div class="section-title">
+                <span>05 — SQL Examples</span>
+                <h2>Representative Queries</h2>
+                <p>
+                    A few examples of the SQL patterns used throughout the project.
+                </p>
+            </div>
+
+            <div class="code-card">
+                <div class="code-header">Duplicate investigation with ROW_NUMBER()</div>
+
+                <pre><code>WITH CTE AS (
+    SELECT *,
+        ROW_NUMBER() OVER(
+            PARTITION BY interaction_id,
+                         user_id,
+                         product_id,
+                         session_id,
+                         interaction_type,
+                         time_stamp,
+                         dwell_time_ms
+        ) AS row_num
+    FROM interactions2
+)
+SELECT *
+FROM CTE
+WHERE row_num &gt; 1;</code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="code-header">Products with high views but few purchases</div>
+
+                <pre><code>WITH views AS (
+    SELECT
+        product_id,
+        COUNT(*) AS total_views
+    FROM interactions2
+    WHERE interaction_type = 'view'
+    GROUP BY product_id
+),
+purchase AS (
+    SELECT
+        product_id,
+        COUNT(*) AS total_purchases
+    FROM purchases2
+    GROUP BY product_id
+)
+SELECT
+    product_name,
+    COALESCE(v.total_views, 0) AS total_views,
+    COALESCE(pu.total_purchases, 0) AS total_purchases
+FROM products2 p
+LEFT JOIN views v
+    ON p.product_id = v.product_id
+LEFT JOIN purchase pu
+    ON p.product_id = pu.product_id
+ORDER BY total_views DESC,
+         total_purchases ASC;</code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="code-header">Average order value</div>
+
+                <pre><code>SELECT
+    ROUND(AVG(total_amount), 2) AS Average_order_value
+FROM purchases2;</code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="code-header">Average rating</div>
+
+                <pre><code>SELECT
+    ROUND(AVG(rating), 2) AS average_rating
+FROM reviews2;</code></pre>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- BUSINESS QUESTIONS -->
+    <section>
+        <div class="container">
+
+            <div class="section-title">
+                <span>06 — Analysis</span>
+                <h2>Business Questions</h2>
+                <p>
+                    The analysis was organized around four areas of the e-commerce business.
+                </p>
+            </div>
+
+            <div class="analysis-grid">
+
+                <div class="question-card">
+                    <h4>Customer Interaction</h4>
+                    <ul>
+                        <li>Which interaction type is most common?</li>
+                        <li>Which products receive the most interactions?</li>
+                        <li>Which products have the highest dwell time?</li>
+                        <li>How does dwell time differ between purchased and non-purchased interactions?</li>
+                        <li>Which products receive many views but few purchases?</li>
+                        <li>How does interaction volume change by month?</li>
+                    </ul>
+                </div>
+
+                <div class="question-card">
+                    <h4>Product Performance</h4>
+                    <ul>
+                        <li>Which category contains the most products?</li>
+                        <li>Which brand has the most products?</li>
+                        <li>Which categories have the highest average prices?</li>
+                        <li>Which products are the most expensive?</li>
+                        <li>Which category has the highest conversion measure?</li>
+                        <li>Which products receive the most reviews?</li>
+                    </ul>
+                </div>
+
+                <div class="question-card">
+                    <h4>Sales & Revenue</h4>
+                    <ul>
+                        <li>What is total revenue?</li>
+                        <li>How many purchases were made?</li>
+                        <li>What is the average order value?</li>
+                        <li>How does revenue change by month?</li>
+                        <li>Which products sell the most?</li>
+                        <li>Which users spend the most?</li>
+                    </ul>
+                </div>
+
+                <div class="question-card">
+                    <h4>Reviews & Users</h4>
+                    <ul>
+                        <li>What is the average rating?</li>
+                        <li>Which products and brands have the highest ratings?</li>
+                        <li>Which categories receive the most reviews?</li>
+                        <li>How are users distributed by country and gender?</li>
+                        <li>Which income levels and loyalty tiers are most common?</li>
+                        <li>Which user groups generate the most spending?</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CUSTOMER INTERACTION -->
+    <section>
+        <div class="container">
+
+            <div class="section-title">
+                <span>07 — Customer Behavior</span>
+                <h2>Customer Interaction Analysis</h2>
+                <p>
+                    The interaction analysis examined how users engaged with
+                    products throughout their sessions.
+                </p>
+            </div>
+
+            <div class="kpi-grid">
+                <div class="kpi">
+                    <span>Peak Monthly Interactions</span>
+                    <strong>11,131</strong>
+                </div>
+
+                <div class="kpi">
+                    <span>Lowest Monthly Interactions</span>
+                    <strong>6,658</strong>
+                </div>
+
+                <div class="kpi">
+                    <span>View Dwell Contribution</span>
+                    <strong>76.56%</strong>
+                </div>
+
+                <div class="kpi">
+                    <span>Add-to-Cart Contribution</span>
+                    <strong>12.65%</strong>
+                </div>
+            </div>
+
+            <div class="findings-grid">
+
+                <div class="finding">
+                    <h3>Most common interaction</h3>
+                    <p>
+                        View was the most common interaction type in the dataset.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>Highest interaction product</h3>
+                    <p>
+                        Apple Accessorie Stand recorded the most product interactions.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>Highest dwell time</h3>
+                    <p>
+                        Apple Accessorie Stand also recorded the highest total dwell time.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>Monthly engagement</h3>
+                    <p>
+                        Interactions peaked in May at 11,131, while June recorded
+                        the lowest monthly interaction volume at 6,658.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>Dwell-time contribution</h3>
+                    <p>
+                        View interactions contributed 76.56% of total dwell time,
+                        while add-to-cart interactions contributed 12.65%.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>High interest, low purchase</h3>
+                    <p>
+                        Products with high views but relatively few purchases
+                        were identified for further investigation because they
+                        may indicate interest without conversion.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- PRODUCT PERFORMANCE -->
+    <section>
+        <div class="container">
+
+            <div class="section-title">
+                <span>08 — Products</span>
+                <h2>Product Performance Analysis</h2>
+                <p>
+                    Product-level analysis examined categories, brands, pricing,
+                    ratings, reviews, and interaction patterns.
+                </p>
+            </div>
+
+            <div class="findings-grid">
+
+                <div class="finding">
+                    <h3>Largest product category</h3>
+                    <p>
+                        Electronics contained the highest number of products.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>Brand with most products</h3>
+                    <p>
+                        Apple had the highest number of products in the dataset.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>Highest average price</h3>
+                    <p>
+                        Electronics had the highest average product price,
+                        while Grocery & Gourmet had the lowest.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>High-priced products</h3>
+                    <p>
+                        Samsung Air7 DSLR, Dell Book6 Bluetooth Earbuds and
+                        Samsung Ultra 13 Display Tablet appeared among the
+                        highest-priced products.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>Category conversion measure</h3>
+                    <p>
+                        Clothing & Accessories recorded the highest value in
+                        the category conversion analysis.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>Most reviewed product</h3>
+                    <p>
+                        Apple Accessorie Stand recorded the highest number of reviews.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>Highest-rated category</h3>
+                    <p>
+                        Electronics recorded the highest average rating among categories.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>Price and ratings</h3>
+                    <p>
+                        The analysis investigated product price alongside ratings,
+                        but the query did not calculate a statistical correlation.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- SALES -->
+    <section>
+        <div class="container">
+
+            <div class="section-title">
+                <span>09 — Revenue</span>
+                <h2>Sales & Revenue Analysis</h2>
+                <p>
+                    Sales analysis focused on purchase volume, revenue,
+                    average order value, products, categories and customers.
+                </p>
+            </div>
+
+            <div class="kpi-grid">
+
+                <div class="kpi">
+                    <span>Total Revenue</span>
+                    <strong>129,510.85</strong>
+                </div>
+
+                <div class="kpi">
+                    <span>Total Purchases</span>
+                    <strong>1,737</strong>
+                </div>
+
+                <div class="kpi">
+                    <span>Average Order Value</span>
+                    <strong>74.56</strong>
+                </div>
+
+                <div class="kpi">
+                    <span>Highest-Spending User</span>
+                    <strong>Top User</strong>
+                </div>
+
+            </div>
+
+            <div class="findings-grid">
+
+                <div class="finding">
+                    <h3>Monthly purchasing activity</h3>
+                    <p>
+                        March and February recorded high purchase activity,
+                        while September recorded the fewest purchases.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>Top-selling product</h3>
+                    <p>
+                        Apple Accessorie Stand was identified as the highest-selling product.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>Highest-spending user</h3>
+                    <p>
+                        User ID 6b888357-4601-4b33-8543-6ca73a7f7b04
+                        recorded the highest spending.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>Revenue by category</h3>
+                    <p>
+                        Electronics and Sports & Outdoors generated the highest
+                        revenue among the analyzed categories.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>Revenue by product</h3>
+                    <p>
+                        Apple Accessorie Stand generated the highest product-level revenue.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- REVIEWS AND USERS -->
+    <section>
+        <div class="container">
+
+            <div class="section-title">
+                <span>10 — Customers</span>
+                <h2>Reviews, Ratings & User Analysis</h2>
+                <p>
+                    The final analysis combined customer reviews with demographic,
+                    preference, loyalty and spending information.
+                </p>
+            </div>
+
+            <div class="kpi-grid">
+
+                <div class="kpi">
+                    <span>Average Rating</span>
+                    <strong>4.07</strong>
+                </div>
+
+                <div class="kpi">
+                    <span>Total Users</span>
+                    <strong>10,000</strong>
+                </div>
+
+                <div class="kpi">
+                    <span>United States User Share</span>
+                    <strong>37.81%</strong>
+                </div>
+
+                <div class="kpi">
+                    <span>Top Loyalty Tier by Spending</span>
+                    <strong>Bronze</strong>
+                </div>
+
+            </div>
+
+            <div class="findings-grid">
+
+                <div class="finding">
+                    <h3>Highest-rated product</h3>
+                    <p>
+                        Wilson Book19 Fitness Equipment was identified as the
+                        highest-rated product under the review threshold used.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>Most reviewed product</h3>
+                    <p>
+                        Apple Accessorie Stand had the highest number of reviews.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>Highest-rated brand</h3>
+                    <p>
+                        Pyrex recorded the highest average brand rating under
+                        the minimum review threshold.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>Review activity</h3>
+                    <p>
+                        March recorded the highest monthly review activity.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>User geography</h3>
+                    <p>
+                        Users from the United States represented 37.81% of users
+                        and generated the highest revenue among countries.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>Gender distribution</h3>
+                    <p>
+                        Female users were slightly more numerous than male users.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>Income level</h3>
+                    <p>
+                        Medium-income users represented the largest income-level group.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>Loyalty behavior</h3>
+                    <p>
+                        Bronze loyalty users were the largest spending group
+                        in the loyalty-tier analysis.
+                    </p>
+                </div>
+
+                <div class="finding">
+                    <h3>Preferred category</h3>
+                    <p>
+                        Electronics was the most preferred product category among users.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- DATA QUALITY -->
+    <section>
+        <div class="container">
+
+            <div class="section-title">
+                <span>11 — Data Quality</span>
+                <h2>Data Quality & Analytical Considerations</h2>
+            </div>
+
+            <div class="summary">
+
+                <p>
+                    Data quality checks were included throughout the preparation
+                    process rather than treating cleaning as a separate final step.
+                </p>
+
+                <p>
+                    The workflow included duplicate investigation, blank-value checks,
+                    structure inspection, trimming, text standardization and NULL handling.
+                </p>
+
+                <p>
+                    Cleaned working tables were created alongside the imported tables,
+                    allowing the original imported data to remain available for comparison.
+                </p>
+
+                <p>
+                    Some analytical queries were investigative rather than corrective;
+                    for example, duplicate checks were used to identify potential
+                    duplicate records rather than automatically deleting them.
+                </p>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- WORKFLOW -->
+    <section>
+        <div class="container">
+
+            <div class="section-title">
+                <span>12 — Workflow</span>
+                <h2>End-to-End SQL Workflow</h2>
+            </div>
+
+            <div class="process-grid">
+
+                <div class="process-card">
+                    <div class="process-number">01</div>
+                    <h3>Import</h3>
+                    <p>
+                        Loaded six CSV datasets into MySQL.
+                    </p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-number">02</div>
+                    <h3>Validate</h3>
+                    <p>
+                        Checked warnings, row counts, structures,
+                        distinct values and data quality.
+                    </p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-number">03</div>
+                    <h3>Clean</h3>
+                    <p>
+                        Created working copies and standardized
+                        IDs, text and NULL values.
+                    </p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-number">04</div>
+                    <h3>Explore</h3>
+                    <p>
+                        Investigated customer behavior,
+                        products, sales, reviews and users.
+                    </p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-number">05</div>
+                    <h3>Connect</h3>
+                    <p>
+                        Used shared identifiers to connect
+                        interactions, products, purchases,
+                        sessions and users.
+                    </p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-number">06</div>
+                    <h3>Communicate</h3>
+                    <p>
+                        Translated SQL results into business-focused
+                        findings and areas for further investigation.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- SUMMARY -->
+    <section>
+        <div class="container">
+
+            <div class="section-title">
+                <span>13 — Summary</span>
+                <h2>Project Summary</h2>
+            </div>
+
+            <div class="summary">
+
+                <p>
+                    This project demonstrates an end-to-end SQL workflow,
+                    from importing raw CSV data into MySQL through data
+                    validation, cleaning, exploratory analysis and business
+                    insight generation.
+                </p>
+
+                <p>
+                    The analysis examined customer interactions, product
+                    performance, purchasing behavior, revenue, reviews,
+                    ratings and user characteristics across six related datasets.
+                </p>
+
+                <p>
+                    The project also strengthened practical SQL skills including
+                    CTEs, window functions, joins, aggregations, conditional logic,
+                    NULL handling and data standardization.
+                </p>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- BACK -->
+    <div class="back-portfolio">
+        <a href="index.html" class="back-button">
+            ← Back to Portfolio
+        </a>
+    </div>
+
+</body>
+</html>

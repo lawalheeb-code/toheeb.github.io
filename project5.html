@@ -1,0 +1,684 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Enrichment & Qualification Automation | Toheeb</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        :root {
+            --p5-accent: #42e6c2;
+            --p5-bg: #090d0d;
+            --p5-card: #111818;
+            --p5-border: #263431;
+            --p5-text: #a4b2ae;
+        }
+
+        .project5-page {
+            background: var(--p5-bg);
+            color: #fff;
+            font-family: "Inter", Arial, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .project5-container {
+            width: min(1150px, 90%);
+            margin: 0 auto;
+        }
+
+        .project5-nav {
+            padding: 25px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #202a27;
+            background: var(--p5-bg);
+        }
+
+        .project5-logo {
+            color: #fff;
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .project5-nav-link {
+            color: var(--p5-text);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .project5-nav-link:hover,
+        .project5-end a:hover {
+            color: var(--p5-accent);
+            border-color: var(--p5-accent);
+        }
+
+        .project5-hero {
+            padding: 100px 0 90px;
+            background:
+                radial-gradient(ellipse at 80% 10%, rgba(66,230,194,.12), transparent 35%),
+                var(--p5-bg);
+            border-bottom: 1px solid #202a27;
+        }
+
+        .project5-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 9px 14px;
+            margin-bottom: 28px;
+            border: 1px solid #28584d;
+            border-radius: 30px;
+            background: rgba(66,230,194,.06);
+            color: var(--p5-accent);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+        }
+
+        .project5-label::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--p5-accent);
+        }
+
+        .project5-hero h1 {
+            max-width: 1000px;
+            font-size: clamp(43px, 7vw, 83px);
+            line-height: 1.05;
+            letter-spacing: -3px;
+            margin-bottom: 28px;
+        }
+
+        .project5-highlight { color: var(--p5-accent); }
+
+        .project5-hero-description {
+            max-width: 760px;
+            color: var(--p5-text);
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .project5-tags,
+        .project5-hero-actions,
+        .project5-summary-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .project5-tags { margin-bottom: 32px; }
+
+        .project5-tags span,
+        .project5-summary-tags span {
+            padding: 9px 13px;
+            background: #121c1a;
+            border: 1px solid var(--p5-border);
+            border-radius: 8px;
+            color: #c6d5d0;
+            font-size: 13px;
+        }
+
+        .project5-button {
+            display: inline-block;
+            padding: 13px 20px;
+            border: 1px solid var(--p5-border);
+            border-radius: 9px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: .3s ease;
+        }
+
+        .project5-button-primary {
+            background: var(--p5-accent);
+            border-color: var(--p5-accent);
+            color: #07110e;
+        }
+
+        .project5-button:hover {
+            transform: translateY(-3px);
+        }
+
+        .project5-button-primary:hover {
+            background: #8af4df;
+        }
+
+        .project5-button-secondary:hover {
+            border-color: var(--p5-accent);
+            color: var(--p5-accent);
+        }
+
+        .project5-section {
+            padding: 85px 0;
+            border-bottom: 1px solid #202a27;
+        }
+
+        .project5-section-dark { background: #0d1312; }
+
+        .project5-section-label {
+            display: block;
+            color: var(--p5-accent);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .project5-section h2 {
+            font-size: clamp(32px, 5vw, 52px);
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+
+        .project5-section-intro {
+            max-width: 780px;
+            color: var(--p5-text);
+            font-size: 16px;
+            line-height: 1.85;
+            margin-bottom: 38px;
+        }
+
+        .project5-overview-grid {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 45px;
+            align-items: start;
+        }
+
+        .project5-overview-copy p,
+        .project5-summary-box p {
+            color: var(--p5-text);
+            font-size: 16px;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .project5-problem-card,
+        .project5-process-card,
+        .project5-logic-card,
+        .project5-tool-card,
+        .project5-value-item {
+            background: var(--p5-card);
+            border: 1px solid var(--p5-border);
+            border-radius: 15px;
+        }
+
+        .project5-problem-card { padding: 27px; }
+        .project5-problem-card h3 { font-size: 21px; margin-bottom: 14px; }
+        .project5-problem-card ul { list-style: none; }
+
+        .project5-problem-card li {
+            padding: 11px 0;
+            border-bottom: 1px solid #24302d;
+            color: var(--p5-text);
+            font-size: 14px;
+        }
+
+        .project5-problem-card li:last-child { border-bottom: none; }
+        .project5-problem-card li::before {
+            content: "→ ";
+            color: var(--p5-accent);
+        }
+
+        .project5-workflow-frame {
+            padding: 10px;
+            border: 1px solid var(--p5-border);
+            border-radius: 16px;
+            background: #070a0a;
+            overflow: hidden;
+        }
+
+        .project5-workflow-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 9px;
+        }
+
+        .project5-image-caption {
+            margin-top: 15px;
+            color: #84938e;
+            font-size: 13px;
+        }
+
+        .project5-process-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .project5-process-card {
+            padding: 26px;
+            transition: transform .3s ease, border-color .3s ease;
+        }
+
+        .project5-process-card:hover {
+            border-color: var(--p5-accent);
+            transform: translateY(-3px);
+        }
+
+        .project5-process-number,
+        .project5-logic-card span {
+            display: block;
+            color: var(--p5-accent);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            margin-bottom: 15px;
+        }
+
+        .project5-process-card h3,
+        .project5-logic-card h3,
+        .project5-tool-card h3,
+        .project5-value-item h3 {
+            font-size: 19px;
+            margin-bottom: 10px;
+        }
+
+        .project5-process-card p,
+        .project5-logic-card p,
+        .project5-tool-card p,
+        .project5-value-item p {
+            color: var(--p5-text);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .project5-logic-grid,
+        .project5-tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 17px;
+        }
+
+        .project5-logic-card,
+        .project5-tool-card { padding: 24px; }
+
+        .project5-note {
+            margin-top: 24px;
+            padding: 20px 23px;
+            border-left: 3px solid var(--p5-accent);
+            background: #111a18;
+            color: var(--p5-text);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .project5-value-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .project5-value-item { padding: 24px; }
+        .project5-summary-box { max-width: 850px; }
+        .project5-summary-tags { margin-top: 25px; }
+
+        .project5-end {
+            padding: 55px 0;
+            text-align: center;
+        }
+
+        .project5-end a {
+            display: inline-block;
+            padding: 13px 21px;
+            border: 1px solid var(--p5-border);
+            border-radius: 9px;
+            color: #fff;
+            text-decoration: none;
+            transition: .3s ease;
+        }
+
+        .project5-footer {
+            padding: 26px 7%;
+            border-top: 1px solid #202a27;
+            text-align: center;
+            color: #75817d;
+            font-size: 12px;
+        }
+
+        @media (max-width: 900px) {
+            .project5-overview-grid { grid-template-columns: 1fr; gap: 25px; }
+            .project5-logic-grid,
+            .project5-tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+
+        @media (max-width: 650px) {
+            .project5-nav { padding: 20px 5%; }
+            .project5-hero { padding: 70px 0; }
+            .project5-hero h1 { font-size: 44px; letter-spacing: -2px; }
+            .project5-hero-description { font-size: 16px; }
+            .project5-section { padding: 65px 0; }
+            .project5-process-grid,
+            .project5-logic-grid,
+            .project5-tools-grid,
+            .project5-value-list { grid-template-columns: 1fr; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .project5-page * { transition: none !important; animation: none !important; }
+        }
+    </style>
+</head>
+
+<body class="project5-page">
+
+<header class="project5-nav">
+    <a href="index.html" class="project5-logo">TOHEEB</a>
+    <a href="index.html#projects" class="project5-nav-link">← Back to Portfolio</a>
+</header>
+
+<main>
+    <section class="project5-hero">
+        <div class="project5-container">
+            <span class="project5-label">Workflow Automation</span>
+
+            <h1>
+                Lead Enrichment<br>
+                &amp; <span class="project5-highlight">Qualification</span><br>
+                Automation
+            </h1>
+
+            <p class="project5-hero-description">
+                A hands-on n8n project exploring how lead information can be
+                processed, enriched, evaluated, and routed through a connected
+                automation workflow.
+            </p>
+
+            <div class="project5-tags">
+                <span>n8n</span>
+                <span>Workflow Automation</span>
+                <span>JavaScript</span>
+                <span>Conditional Logic</span>
+                <span>API Integration</span>
+            </div>
+
+            <div class="project5-hero-actions">
+                <a href="#workflow" class="project5-button project5-button-primary">Explore the Workflow ↓</a>
+                <a href="index.html#projects" class="project5-button project5-button-secondary">View Other Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="project5-section project5-section-dark" id="overview">
+        <div class="project5-container">
+            <span class="project5-section-label">01 / Project Overview</span>
+            <h2>From manual lead handling<br>to a connected workflow.</h2>
+
+            <div class="project5-overview-grid">
+                <div class="project5-overview-copy">
+                    <p>
+                        Lead enrichment and qualification involve more than
+                        collecting contact details. Businesses may need to
+                        check submitted information, gather company context,
+                        evaluate fit, and decide which leads deserve attention.
+                    </p>
+                    <p>
+                        When these activities are handled separately, teams
+                        can spend time repeating tasks and transferring data
+                        between tools. A structured workflow can bring these
+                        steps together and apply consistent processing rules.
+                    </p>
+                    <p>
+                        I built and tested this n8n workflow to practise
+                        designing connected automation steps, working with
+                        lead data, applying decision logic, and troubleshooting
+                        how information moves between nodes.
+                    </p>
+                </div>
+
+                <aside class="project5-problem-card">
+                    <h3>Business problem</h3>
+                    <ul>
+                        <li>Repetitive lead-processing tasks</li>
+                        <li>Incomplete company and contact information</li>
+                        <li>Time-consuming lead evaluation</li>
+                        <li>Inconsistent handling of lead records</li>
+                        <li>Manual handoffs between processing stages</li>
+                    </ul>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <section class="project5-section" id="workflow">
+        <div class="project5-container">
+            <span class="project5-section-label">02 / Workflow Architecture</span>
+            <h2>The workflow in action.</h2>
+            <p class="project5-section-intro">
+                The n8n canvas shows how the nodes are connected and how data
+                moves through the workflow. Conditional branches allow different
+                outcomes to follow different paths.
+            </p>
+
+            <div class="project5-workflow-frame">
+                <img src="images/project5-workflow.png"
+                     alt="Lead enrichment and qualification automation built in n8n"
+                     loading="lazy">
+            </div>
+            <p class="project5-image-caption">
+                n8n workflow canvas — lead processing, connected nodes, and decision branches.
+            </p>
+        </div>
+    </section>
+
+    <section class="project5-section project5-section-dark" id="process">
+        <div class="project5-container">
+            <span class="project5-section-label">03 / Process Breakdown</span>
+            <h2>Breaking the workflow into stages.</h2>
+            <p class="project5-section-intro">
+                The following stages describe the lead-management process this
+                project is designed to support. The exact actions depend on
+                the nodes and integrations configured in the workflow.
+            </p>
+
+            <div class="project5-process-grid">
+                <article class="project5-process-card">
+                    <span class="project5-process-number">STEP 01</span>
+                    <h3>Lead Intake</h3>
+                    <p>Receive lead details as the starting point for subsequent processing.</p>
+                </article>
+
+                <article class="project5-process-card">
+                    <span class="project5-process-number">STEP 02</span>
+                    <h3>Data Preparation</h3>
+                    <p>Map and prepare available fields so later workflow steps can use the required information.</p>
+                </article>
+
+                <article class="project5-process-card">
+                    <span class="project5-process-number">STEP 03</span>
+                    <h3>Enrichment</h3>
+                    <p>Use the configured enrichment step to obtain additional context about a lead or its company.</p>
+                </article>
+
+                <article class="project5-process-card">
+                    <span class="project5-process-number">STEP 04</span>
+                    <h3>Qualification</h3>
+                    <p>Apply defined business rules to evaluate lead attributes and determine the next processing path.</p>
+                </article>
+
+                <article class="project5-process-card">
+                    <span class="project5-process-number">STEP 05</span>
+                    <h3>Conditional Routing</h3>
+                    <p>Direct records through different branches according to the conditions configured in n8n.</p>
+                </article>
+
+                <article class="project5-process-card">
+                    <span class="project5-process-number">STEP 06</span>
+                    <h3>Data Handling</h3>
+                    <p>Pass the relevant lead information between connected steps while keeping the workflow organised.</p>
+                </article>
+
+                <article class="project5-process-card">
+                    <span class="project5-process-number">STEP 07</span>
+                    <h3>Downstream Actions</h3>
+                    <p>Use the configured destination or notification steps to continue processing the resulting information.</p>
+                </article>
+
+                <article class="project5-process-card">
+                    <span class="project5-process-number">STEP 08</span>
+                    <h3>Testing and Troubleshooting</h3>
+                    <p>Execute the workflow, inspect node outputs, and investigate integration or data issues during testing.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="project5-section" id="logic">
+        <div class="project5-container">
+            <span class="project5-section-label">04 / Decision Logic</span>
+            <h2>Using rules to guide decisions.</h2>
+            <p class="project5-section-intro">
+                Qualification logic helps turn lead attributes into actionable
+                outcomes. Rules should be explicit, testable, and aligned with
+                the business process.
+            </p>
+
+            <div class="project5-logic-grid">
+                <article class="project5-logic-card">
+                    <span>PATH 01</span>
+                    <h3>Priority Handling</h3>
+                    <p>Leads that meet the configured high-priority criteria can be directed to the relevant next step.</p>
+                </article>
+
+                <article class="project5-logic-card">
+                    <span>PATH 02</span>
+                    <h3>Further Review</h3>
+                    <p>Records that need more information or review can follow a separate processing path where configured.</p>
+                </article>
+
+                <article class="project5-logic-card">
+                    <span>PATH 03</span>
+                    <h3>Alternative Handling</h3>
+                    <p>Leads that do not meet a particular condition can be routed through the alternative branch.</p>
+                </article>
+            </div>
+
+            <div class="project5-note">
+                The qualification rules and outcomes should be understood from
+                the actual conditions configured in the workflow. These cards
+                explain the purpose of branching, not fixed scoring thresholds.
+            </div>
+        </div>
+    </section>
+
+    <section class="project5-section project5-section-dark" id="tools">
+        <div class="project5-container">
+            <span class="project5-section-label">05 / Tools and Technologies</span>
+            <h2>What I worked with.</h2>
+
+            <div class="project5-tools-grid">
+                <article class="project5-tool-card">
+                    <h3>n8n</h3>
+                    <p>Connecting workflow nodes, configuring execution paths, and orchestrating automation steps.</p>
+                </article>
+
+                <article class="project5-tool-card">
+                    <h3>JavaScript</h3>
+                    <p>Working with structured data and custom logic where needed in workflow code.</p>
+                </article>
+
+                <article class="project5-tool-card">
+                    <h3>API Integration</h3>
+                    <p>Configuring requests and handling responses from external services used by the workflow.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="project5-section" id="value">
+        <div class="project5-container">
+            <span class="project5-section-label">06 / Business Value</span>
+            <h2>Why this approach matters.</h2>
+
+            <div class="project5-value-list">
+                <article class="project5-value-item">
+                    <h3>Reduced Repetition</h3>
+                    <p>Connecting routine steps can reduce repeated manual handling of lead information.</p>
+                </article>
+
+                <article class="project5-value-item">
+                    <h3>Consistent Rules</h3>
+                    <p>Defined conditions make processing decisions easier to apply and review consistently.</p>
+                </article>
+
+                <article class="project5-value-item">
+                    <h3>Structured Data Flow</h3>
+                    <p>Connected nodes make it easier to follow how information moves from one stage to another.</p>
+                </article>
+
+                <article class="project5-value-item">
+                    <h3>Practical Troubleshooting</h3>
+                    <p>Testing executions and inspecting outputs help reveal configuration, data, and integration issues.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="project5-section project5-section-dark" id="learnings">
+        <div class="project5-container">
+            <span class="project5-section-label">07 / Key Learnings</span>
+
+            <div class="project5-summary-box">
+                <h2>Automation is more than connecting nodes.</h2>
+
+                <p>
+                    Building and testing this project strengthened my
+                    understanding of how workflow structure, data mapping,
+                    conditional logic, and external integrations work together.
+                </p>
+
+                <p>
+                    I also learned the importance of inspecting each node's
+                    output when something goes wrong. An issue that appears
+                    to be a workflow configuration problem may instead come
+                    from the data or the external service being used.
+                </p>
+
+                <p>
+                    This project reflects my continued development in
+                    workflow automation and my interest in using practical
+                    automation to improve business processes.
+                </p>
+
+                <div class="project5-summary-tags">
+                    <span>n8n</span>
+                    <span>Workflow Design</span>
+                    <span>Conditional Logic</span>
+                    <span>Data Processing</span>
+                    <span>Testing and Debugging</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<section class="project5-end">
+    <div class="project5-container">
+        <a href="index.html#projects">← Back to All Projects</a>
+    </div>
+</section>
+
+<footer class="project5-footer">
+    <p>© 2026 Toheeb. Lead Enrichment &amp; Qualification Automation.</p>
+</footer>
+
+</body>
+</html>
