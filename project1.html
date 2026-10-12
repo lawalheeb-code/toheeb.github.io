@@ -8,6 +8,11 @@
 
     <title>E-Commerce Customer & Sales Analysis | Toheeb</title>
 
+    <meta
+        name="description"
+        content="E-commerce customer behavior, product performance and sales analysis using Power BI, SQL, Excel and data modeling."
+    >
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -23,28 +28,107 @@
     <style>
 
         /* =========================
-           DATA STRUCTURE
+           GENERAL PROJECT SECTIONS
         ========================== */
 
-        .project1-data-structure {
+        .project1-data-structure,
+        .project1-power-query,
+        .project1-model {
             padding: 100px 8%;
+        }
+
+        .project1-data-structure {
             background: #0d1117;
         }
 
-        .project1-data-heading {
-            max-width: 850px;
-            margin-bottom: 50px;
+        .project1-heading {
+            max-width: 900px;
+            margin-bottom: 48px;
         }
 
-        .project1-data-heading h2 {
+        .project1-heading h2 {
             margin-top: 10px;
         }
 
-        .project1-data-heading p:last-child {
+        .project1-heading p:last-child {
             color: #a7adb8;
             line-height: 1.8;
             margin-top: 18px;
+            max-width: 850px;
         }
+
+
+        /* =========================
+           PROJECT OVERVIEW
+        ========================== */
+
+        .project1-overview-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 0.8fr;
+            gap: 22px;
+            margin-top: 35px;
+        }
+
+        .project1-overview-card {
+            background: #111820;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 28px;
+        }
+
+        .project1-overview-card h3 {
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .project1-overview-card p {
+            color: #9ba4b1;
+            line-height: 1.75;
+        }
+
+        .project1-objectives {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .project1-objectives li {
+            color: #a7adb8;
+            line-height: 1.7;
+            padding: 9px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .project1-objectives li:last-child {
+            border-bottom: none;
+        }
+
+        .project1-objectives li::before {
+            content: "→";
+            color: #5b61ff;
+            margin-right: 9px;
+        }
+
+        .project1-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 18px;
+        }
+
+        .project1-tools span {
+            padding: 7px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(91,97,255,0.08);
+            color: #c4ccd7;
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           DATA STRUCTURE
+        ========================== */
 
         .project1-table-grid {
             display: grid;
@@ -67,6 +151,7 @@
         .project1-table-purpose {
             color: #8f98a6;
             font-size: 14px;
+            line-height: 1.6;
             margin-bottom: 20px;
         }
 
@@ -77,8 +162,8 @@
         }
 
         .project1-columns span {
-            background: rgba(91, 97, 255, 0.08);
-            border: 1px solid rgba(91, 97, 255, 0.18);
+            background: rgba(91,97,255,0.08);
+            border: 1px solid rgba(91,97,255,0.18);
             color: #b9c2ce;
             padding: 7px 10px;
             border-radius: 6px;
@@ -91,22 +176,7 @@
         ========================== */
 
         .project1-power-query {
-            padding: 100px 8%;
-        }
-
-        .project1-power-query-content {
-            max-width: 900px;
-            margin-bottom: 45px;
-        }
-
-        .project1-power-query-content h2 {
-            margin-top: 10px;
-        }
-
-        .project1-power-query-content p:last-child {
-            color: #a7adb8;
-            line-height: 1.8;
-            margin-top: 18px;
+            background: #0b1016;
         }
 
         .project1-process-grid {
@@ -137,7 +207,7 @@
         .project1-process-card p {
             color: #969fac;
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .project1-process-image {
@@ -159,23 +229,7 @@
         ========================== */
 
         .project1-model {
-            padding: 100px 8%;
             background: #0d1117;
-        }
-
-        .project1-model-content {
-            max-width: 900px;
-            margin-bottom: 45px;
-        }
-
-        .project1-model-content h2 {
-            margin-top: 10px;
-        }
-
-        .project1-model-content p:last-child {
-            color: #a7adb8;
-            line-height: 1.8;
-            margin-top: 18px;
         }
 
         .project1-model-image {
@@ -184,7 +238,7 @@
             border-radius: 14px;
             border: 1px solid rgba(255,255,255,0.08);
             background: #111820;
-            margin-bottom: 55px;
+            margin-bottom: 50px;
         }
 
         .project1-model-image img {
@@ -230,13 +284,67 @@
 
 
         /* =========================
+           DASHBOARD INSIGHT IMPROVEMENTS
+        ========================== */
+
+        .project1-insight-note {
+            max-width: 850px;
+            margin-top: 25px;
+            color: #8f98a6;
+            line-height: 1.75;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           PROJECT SUMMARY
+        ========================== */
+
+        .project1-summary-highlight {
+            max-width: 850px;
+            margin-top: 22px;
+            padding: 22px;
+            border-left: 3px solid #5b61ff;
+            background: rgba(91,97,255,0.06);
+            color: #b8c0cb;
+            line-height: 1.75;
+        }
+
+
+        /* =========================
+           BACK TO PORTFOLIO
+        ========================== */
+
+        .project-navigation {
+            padding: 55px 8% 65px;
+            text-align: center;
+            background: #0b1016;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 12px 20px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 8px;
+            color: #d8dde5;
+            font-size: 14px;
+            transition: 0.2s ease;
+        }
+
+        .back-btn:hover {
+            background: #111820;
+            color: #ffffff;
+            border-color: rgba(255,255,255,0.25);
+        }
+
+
+        /* =========================
            RESPONSIVE
         ========================== */
 
-        @media (max-width: 900px) {
+        @media (max-width: 1000px) {
 
-            .project1-table-grid,
-            .project1-relationships {
+            .project1-overview-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -244,7 +352,13 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
+            .project1-table-grid,
+            .project1-relationships {
+                grid-template-columns: 1fr;
+            }
+
         }
+
 
         @media (max-width: 600px) {
 
@@ -259,8 +373,13 @@
             }
 
             .project1-table-card,
-            .project1-relationship-card {
+            .project1-relationship-card,
+            .project1-overview-card {
                 padding: 22px;
+            }
+
+            .project-navigation {
+                padding: 45px 5% 55px;
             }
 
         }
@@ -277,7 +396,9 @@
 
     <nav>
 
-        <div class="logo">TOHEEB</div>
+        <div class="logo">
+            TOHEEB
+        </div>
 
         <div class="nav-links">
 
@@ -309,12 +430,13 @@
         </p>
 
         <h1>
-            E-Commerce Customer Behavior & Sales Performance Analysis
+            E-Commerce Customer Behavior &amp; Sales Performance Analysis
         </h1>
 
         <p>
             An interactive Power BI analysis exploring sales performance,
-            customer behavior, purchasing conversion, and product reviews.
+            customer behavior, purchasing conversion, product performance,
+            and customer reviews.
         </p>
 
     </section>
@@ -327,28 +449,96 @@
 
     <section class="project1-data-structure">
 
-        <div class="project1-data-heading">
+        <div class="project1-heading">
 
             <p class="project-label">
                 PROJECT OVERVIEW
             </p>
 
             <h2>
-                Understanding customer behavior and sales performance
+                Turning e-commerce data into business insights
             </h2>
 
             <p>
-
-                This project examines e-commerce sales performance, customer interactions, 
-                purchasing behavior, and product reviews to understand how customers engage with 
-                products and how that activity relates to purchasing outcomes. Using six related tables, 
-                I prepared and modeled the data, performed SQL and DAX analysis, 
-                and developed interactive Power BI dashboards to explore product performance, 
-                customer engagement, purchase conversion, and customer ratings. The objective was to turn 
-                raw data into actionable insights that could help an  e-commerce business evaluate its performance, 
-                identify areas for further investigation, and make more informed decisions.
-
+                This project analyzes e-commerce customer activity,
+                purchasing behavior, product performance, sales, and
+                customer reviews. I worked across six related tables,
+                prepared the data, built a relational model, performed
+                SQL and DAX analysis, and developed interactive Power BI
+                dashboards.
             </p>
+
+        </div>
+
+
+        <div class="project1-overview-grid">
+
+            <div class="project1-overview-card">
+
+                <h3>
+                    Business Objective
+                </h3>
+
+                <p>
+                    The goal was to understand how customers interact
+                    with products, how those interactions relate to
+                    purchasing activity, which products contribute most
+                    to sales, and what customer reviews reveal about
+                    product experience.
+                </p>
+
+            </div>
+
+
+            <div class="project1-overview-card">
+
+                <h3>
+                    Key Questions
+                </h3>
+
+                <ul class="project1-objectives">
+
+                    <li>
+                        Which products and categories perform best?
+                    </li>
+
+                    <li>
+                        How do customer interactions relate to purchases?
+                    </li>
+
+                    <li>
+                        Where are potential conversion opportunities?
+                    </li>
+
+                    <li>
+                        What do customer ratings reveal?
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="project1-overview-card" style="margin-top:22px;">
+
+            <h3>
+                Tools &amp; Skills
+            </h3>
+
+            <div class="project1-tools">
+
+                <span>Power BI</span>
+                <span>DAX</span>
+                <span>SQL</span>
+                <span>Excel</span>
+                <span>Power Query</span>
+                <span>Data Modeling</span>
+                <span>Data Cleaning</span>
+                <span>Dashboard Design</span>
+
+            </div>
 
         </div>
 
@@ -362,7 +552,7 @@
 
     <section class="project1-data-structure">
 
-        <div class="project1-data-heading">
+        <div class="project1-heading">
 
             <p class="project-label">
                 DATA STRUCTURE
@@ -373,11 +563,11 @@
             </h2>
 
             <p>
-
                 The project uses six related tables covering customer
                 activity, products, purchases, reviews, sessions,
-                and users.
-
+                and users. These tables provide the foundation for
+                analyzing the customer journey from interaction through
+                purchase and post-purchase feedback.
             </p>
 
         </div>
@@ -385,8 +575,6 @@
 
         <div class="project1-table-grid">
 
-
-            <!-- INTERACTIONS -->
 
             <div class="project1-table-card">
 
@@ -414,8 +602,6 @@
 
 
 
-            <!-- PRODUCTS -->
-
             <div class="project1-table-card">
 
                 <h3>
@@ -442,8 +628,6 @@
             </div>
 
 
-
-            <!-- PURCHASES -->
 
             <div class="project1-table-card">
 
@@ -474,8 +658,6 @@
 
 
 
-            <!-- REVIEWS -->
-
             <div class="project1-table-card">
 
                 <h3>
@@ -498,8 +680,6 @@
             </div>
 
 
-
-            <!-- SESSIONS -->
 
             <div class="project1-table-card">
 
@@ -525,8 +705,6 @@
             </div>
 
 
-
-            <!-- USERS -->
 
             <div class="project1-table-card">
 
@@ -565,7 +743,7 @@
 
     <section class="project1-power-query">
 
-        <div class="project1-power-query-content">
+        <div class="project1-heading">
 
             <p class="project-label">
                 DATA PREPARATION
@@ -576,13 +754,10 @@
             </h2>
 
             <p>
-
-                I used Power Query to prepare the raw tables before
-                analysis and modeling. The process included reviewing
-                the source data, checking data types, standardizing
-                values, handling missing values, and preparing the
-                tables for analysis.
-
+                I used Power Query to inspect and prepare the source
+                tables before building the Power BI model. The process
+                focused on data types, missing values, consistency,
+                and creating analysis-ready tables.
             </p>
 
         </div>
@@ -596,12 +771,12 @@
                 <span>01</span>
 
                 <h3>
-                    Source
+                    Source Inspection
                 </h3>
 
                 <p>
                     Loaded the individual datasets into Power Query
-                    for inspection and preparation.
+                    and reviewed their structure and fields.
                 </p>
 
             </div>
@@ -634,8 +809,8 @@
                 </h3>
 
                 <p>
-                    Standardized fields and prepared columns for
-                    analysis and relationships.
+                    Prepared and standardized fields required for
+                    analysis and data modeling.
                 </p>
 
             </div>
@@ -651,8 +826,8 @@
                 </h3>
 
                 <p>
-                    Checked the prepared tables before moving into
-                    the Power BI data model.
+                    Checked the prepared tables before creating
+                    relationships and measures in Power BI.
                 </p>
 
             </div>
@@ -675,12 +850,12 @@
 
 
     <!-- =========================
-         DATA MODELING
+         DATA MODEL
     ========================== -->
 
     <section class="project1-model">
 
-        <div class="project1-model-content">
+        <div class="project1-heading">
 
             <p class="project-label">
                 DATA MODELING
@@ -691,16 +866,11 @@
             </h2>
 
             <p>
-
-                After preparing the individual tables, I created
-                relationships between the datasets using shared
-                identifiers such as product ID, user ID, session ID,
-                and interaction ID.
-
-                This allowed customer interactions, purchases,
-                products, sessions, and reviews to be analyzed
-                together.
-
+                After preparing the tables, I created relationships
+                using shared identifiers such as product ID, user ID,
+                session ID, and interaction ID. This allowed customer
+                activity, purchases, products, sessions, and reviews
+                to be analyzed together.
             </p>
 
         </div>
@@ -719,8 +889,6 @@
         <div class="project1-relationships">
 
 
-            <!-- RELATIONSHIP 01 -->
-
             <div class="project1-relationship-card">
 
                 <span>01</span>
@@ -730,21 +898,14 @@
                 </h3>
 
                 <p>
-
-                    The <code>product_id</code> connects products
-                    to customer interactions.
-
-                    This allows product information to be analyzed
-                    alongside views, clicks, cart activity, and
-                    other tracked interactions.
-
+                    <code>product_id</code> connects products to
+                    customer interactions, allowing product information
+                    to be analyzed alongside engagement activity.
                 </p>
 
             </div>
 
 
-
-            <!-- RELATIONSHIP 02 -->
 
             <div class="project1-relationship-card">
 
@@ -755,20 +916,14 @@
                 </h3>
 
                 <p>
-
-                    The <code>product_id</code> connects products
-                    to purchase records.
-
-                    This allows product-level purchasing activity,
-                    quantity, and revenue to be analyzed.
-
+                    <code>product_id</code> connects products to
+                    purchase records, supporting product-level
+                    sales and revenue analysis.
                 </p>
 
             </div>
 
 
-
-            <!-- RELATIONSHIP 03 -->
 
             <div class="project1-relationship-card">
 
@@ -779,20 +934,13 @@
                 </h3>
 
                 <p>
-
-                    The <code>product_id</code> connects products
-                    to customer reviews.
-
-                    This makes it possible to analyze product
-                    performance alongside ratings and review activity.
-
+                    <code>product_id</code> connects products with
+                    customer ratings and review activity.
                 </p>
 
             </div>
 
 
-
-            <!-- RELATIONSHIP 04 -->
 
             <div class="project1-relationship-card">
 
@@ -803,20 +951,13 @@
                 </h3>
 
                 <p>
-
-                    The <code>user_id</code> connects the users table
-                    with customer activity recorded across the model.
-
-                    This allows demographic and customer attributes
-                    to be used when analyzing behavior and purchases.
-
+                    <code>user_id</code> connects customer attributes
+                    with activity and purchasing behavior.
                 </p>
 
             </div>
 
 
-
-            <!-- RELATIONSHIP 05 -->
 
             <div class="project1-relationship-card">
 
@@ -827,20 +968,13 @@
                 </h3>
 
                 <p>
-
-                    The <code>session_id</code> connects sessions
-                    to individual interaction records.
-
-                    This provides context for understanding the
-                    sequence of customer activity during sessions.
-
+                    <code>session_id</code> connects sessions with
+                    the interaction records generated during them.
                 </p>
 
             </div>
 
 
-
-            <!-- RELATIONSHIP 06 -->
 
             <div class="project1-relationship-card">
 
@@ -851,21 +985,13 @@
                 </h3>
 
                 <p>
-
-                    The <code>session_id</code> connects purchases
-                    to the sessions in which purchasing activity
-                    occurred.
-
-                    This supports analysis of session conversion
-                    and purchasing behavior.
-
+                    <code>session_id</code> connects purchasing
+                    activity to the sessions in which it occurred.
                 </p>
 
             </div>
 
 
-
-            <!-- RELATIONSHIP 07 -->
 
             <div class="project1-relationship-card">
 
@@ -876,21 +1002,14 @@
                 </h3>
 
                 <p>
-
-                    The <code>interaction_id</code> connects purchase
-                    records with the interaction associated with
-                    the purchase.
-
-                    This supports analysis of how interactions
-                    progress toward purchasing activity.
-
+                    <code>interaction_id</code> connects purchase
+                    records with the related interaction where
+                    applicable.
                 </p>
 
             </div>
 
 
-
-            <!-- RELATIONSHIP 08 -->
 
             <div class="project1-relationship-card">
 
@@ -901,14 +1020,8 @@
                 </h3>
 
                 <p>
-
-                    The Calendar table provides a dedicated date
-                    structure for analyzing activity and purchasing
-                    patterns across time.
-
-                    This supports consistent monthly and date-based
-                    analysis in Power BI.
-
+                    A dedicated Calendar table supports consistent
+                    time-based analysis across the model.
                 </p>
 
             </div>
@@ -947,10 +1060,8 @@
                 </h3>
 
                 <p>
-
-                    Which products and categories are driving revenue
-                    and how is overall sales performance changing?
-
+                    Which products and categories are driving revenue,
+                    and how is sales performance changing over time?
                 </p>
 
             </div>
@@ -966,10 +1077,9 @@
                 </h3>
 
                 <p>
-
                     How are customers interacting with products,
-                    and where are potential customers dropping off?
-
+                    and where are potential customers dropping out
+                    of the purchasing journey?
                 </p>
 
             </div>
@@ -985,10 +1095,8 @@
                 </h3>
 
                 <p>
-
-                    What do customer reviews and ratings reveal
-                    about product experience and satisfaction?
-
+                    What do customer ratings and review activity
+                    reveal about product experience?
                 </p>
 
             </div>
@@ -1007,11 +1115,11 @@
     <section class="dashboard-section">
 
         <p class="project-label">
-            01 — PRODUCT PERFORMANCE & SALES
+            01 — PRODUCT PERFORMANCE &amp; SALES
         </p>
 
         <h2>
-            Product Performance & Sales
+            Product Performance &amp; Sales
         </h2>
 
 
@@ -1039,7 +1147,7 @@
         </p>
 
         <h2>
-            What the data revealed
+            What the analysis revealed
         </h2>
 
 
@@ -1051,15 +1159,13 @@
                 <span>01</span>
 
                 <h3>
-                    Revenue Performance
+                    Revenue Concentration
                 </h3>
 
                 <p>
-
-                    The analysis highlights the products and categories
-                    contributing most to overall revenue, helping
-                    identify where sales performance is concentrated.
-
+                    The analysis identifies the products and categories
+                    contributing most strongly to revenue, helping
+                    highlight where sales performance is concentrated.
                 </p>
 
             </div>
@@ -1075,11 +1181,9 @@
                 </h3>
 
                 <p>
-
-                    Comparing product-level performance reveals
-                    differences in purchasing activity and helps
-                    identify products that deserve closer attention.
-
+                    Comparing product-level sales activity helps
+                    distinguish stronger performers from products
+                    that may require further investigation.
                 </p>
 
             </div>
@@ -1091,21 +1195,27 @@
                 <span>03</span>
 
                 <h3>
-                    Customer Activity
+                    Sales Trends
                 </h3>
 
                 <p>
-
-                    Customer interactions and purchases provide
-                    context for understanding how engagement
-                    translates into sales.
-
+                    Time-based analysis provides visibility into
+                    changes in purchasing activity and revenue,
+                    supporting further investigation of seasonal
+                    or monthly patterns.
                 </p>
 
             </div>
 
 
         </div>
+
+
+        <p class="project1-insight-note">
+            These findings are descriptive. Further analysis would be
+            required to determine why particular products or categories
+            outperform others.
+        </p>
 
     </section>
 
@@ -1118,11 +1228,11 @@
     <section class="dashboard-section">
 
         <p class="project-label">
-            02 — CUSTOMER BEHAVIOR & CONVERSION
+            02 — CUSTOMER BEHAVIOR &amp; CONVERSION
         </p>
 
         <h2>
-            Customer Behavior & Conversion
+            Customer Behavior &amp; Conversion
         </h2>
 
 
@@ -1150,7 +1260,7 @@
         </p>
 
         <h2>
-            What the data revealed
+            What the analysis revealed
         </h2>
 
 
@@ -1162,15 +1272,13 @@
                 <span>01</span>
 
                 <h3>
-                    Low Purchase Conversion
+                    Purchase Rate
                 </h3>
 
                 <p>
-
-                    Out of 100K recorded interactions, the purchase
-                    rate was 3.4%, showing that only a small share
-                    of tracked interactions resulted in a purchase.
-
+                    The dashboard shows a purchase rate of 3.4% based
+                    on the project's defined interaction-to-purchase
+                    calculation.
                 </p>
 
             </div>
@@ -1182,15 +1290,14 @@
                 <span>02</span>
 
                 <h3>
-                    High Abandonment
+                    Abandonment Rate
                 </h3>
 
                 <p>
-
-                    The abandonment rate was 96.56%, indicating that
-                    most tracked interactions did not progress to
-                    a completed purchase.
-
+                    The dashboard reports an abandonment rate of 96.56%,
+                    indicating that most tracked interactions did not
+                    progress to a completed purchase under the project's
+                    calculation.
                 </p>
 
             </div>
@@ -1206,17 +1313,22 @@
                 </h3>
 
                 <p>
-
-                    Average dwell time was 17.49K seconds, providing
-                    a metric for investigating how long users remained
-                    engaged during their interactions.
-
+                    Average dwell time is used as an engagement metric
+                    to help investigate how much time customers spend
+                    interacting with products.
                 </p>
 
             </div>
 
 
         </div>
+
+
+        <p class="project1-insight-note">
+            Purchase Rate and Abandonment Rate are based on the definitions
+            used in this project. A more granular conversion analysis could
+            compare unique users or sessions at each stage of the funnel.
+        </p>
 
     </section>
 
@@ -1229,11 +1341,11 @@
     <section class="dashboard-section">
 
         <p class="project-label">
-            03 — CUSTOMER REVIEWS & RATINGS
+            03 — CUSTOMER REVIEWS &amp; RATINGS
         </p>
 
         <h2>
-            Customer Reviews & Ratings
+            Customer Reviews &amp; Ratings
         </h2>
 
 
@@ -1261,7 +1373,7 @@
         </p>
 
         <h2>
-            What the data revealed
+            What the analysis revealed
         </h2>
 
 
@@ -1277,11 +1389,9 @@
                 </h3>
 
                 <p>
-
                     Customers gave an average rating of 4.05 out of 5,
-                    providing an overall measure of customer feedback
+                    providing an overall view of customer feedback
                     across the reviewed products.
-
                 </p>
 
             </div>
@@ -1293,16 +1403,13 @@
                 <span>02</span>
 
                 <h3>
-                    Review Volume
+                    Review Activity
                 </h3>
 
                 <p>
-
-                    The analysis contains 1,253 customer reviews,
-                    providing a substantial set of feedback for
-                    understanding customer sentiment and product
-                    experience.
-
+                    The dashboard contains 1,253 customer reviews,
+                    providing a useful base for examining product
+                    feedback and rating patterns.
                 </p>
 
             </div>
@@ -1314,15 +1421,13 @@
                 <span>03</span>
 
                 <h3>
-                    Room for Deeper Analysis
+                    Rating Context Matters
                 </h3>
 
                 <p>
-
-                    The overall rating provides a useful summary,
-                    but breaking ratings down by product or category
-                    would help identify where customer experience differs.
-
+                    Product ratings are more meaningful when considered
+                    alongside review volume, since a high rating based
+                    on very few reviews may be less representative.
                 </p>
 
             </div>
@@ -1335,7 +1440,7 @@
 
 
     <!-- =========================
-         WORKFLOW
+         ANALYTICAL WORKFLOW
     ========================== -->
 
     <section class="workflow-section">
@@ -1361,10 +1466,8 @@
                 </h3>
 
                 <p>
-
-                    Explored and cleaned the dataset using Excel,
-                    SQL and Power Query to prepare the data for analysis.
-
+                    Explored and prepared the source data using
+                    Power Query and SQL before analysis.
                 </p>
 
             </div>
@@ -1380,11 +1483,9 @@
                 </h3>
 
                 <p>
-
                     Built relationships between the relevant tables
                     using product, user, session, and interaction
-                    identifiers to create a structured analytical model.
-
+                    identifiers.
                 </p>
 
             </div>
@@ -1400,10 +1501,8 @@
                 </h3>
 
                 <p>
-
                     Used SQL and DAX to investigate customer behavior,
-                    interactions, purchases, and review metrics.
-
+                    interactions, purchases, sales, and review metrics.
                 </p>
 
             </div>
@@ -1419,10 +1518,8 @@
                 </h3>
 
                 <p>
-
                     Built interactive Power BI dashboards to communicate
-                    patterns, KPIs, and business insights clearly.
-
+                    KPIs, trends, comparisons, and business findings.
                 </p>
 
             </div>
@@ -1469,16 +1566,18 @@
         </h2>
 
         <p class="summary-text">
-
             This project transformed raw e-commerce data into an
             interactive analytical report covering sales performance,
             customer behavior, purchasing activity, and customer reviews.
-
-            The process involved preparing the data, building a relational
-            model, analyzing the data, and communicating the findings
-            through Power BI dashboards.
-
         </p>
+
+
+        <div class="project1-summary-highlight">
+            The main analytical value of the project was connecting
+            different parts of the customer journey — product
+            interactions, purchasing behavior, sales performance,
+            and customer feedback — within one Power BI model.
+        </div>
 
 
         <div class="summary-grid">
@@ -1491,11 +1590,9 @@
                 </h3>
 
                 <p>
-
                     Analyzed product and category performance to
                     understand where revenue and purchasing activity
                     were concentrated.
-
                 </p>
 
             </div>
@@ -1509,10 +1606,8 @@
                 </h3>
 
                 <p>
-
                     Examined customer interactions and purchase behavior
                     to identify patterns in engagement and conversion.
-
                 </p>
 
             </div>
@@ -1526,10 +1621,8 @@
                 </h3>
 
                 <p>
-
-                    Analyzed customer ratings and review volume to
-                    provide a clearer view of product experience.
-
+                    Analyzed customer ratings and review activity to
+                    provide additional context around product experience.
                 </p>
 
             </div>
@@ -1545,7 +1638,7 @@
 
 
 <!-- =========================
-     NAVIGATION
+     BACK TO PORTFOLIO
 ========================== -->
 
 <section class="project-navigation">
